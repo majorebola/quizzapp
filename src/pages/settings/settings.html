@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			Settings
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<p>Settings page</p>
+
+	<p>Here you'll select the quiz (and save settings)</p>
+	<p>Log in and logout also</p>
+
+
+
+	<h3>Settings</h3>
+	<ion-item>
+		<ion-label>Select Quiz</ion-label>
+		<ion-select [(ngModel)]="quiz" (ionChange)="updateCategories()">
+			<ion-option value="{{q.id}}" *ngFor="let q of quizzes">{{q.name}}</ion-option>
+		</ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Select Categories</ion-label>
+		<ion-select [(ngModel)]="category">
+			<ion-option value="{{c.id}}" *ngFor="let c of categories">{{c.name}}</ion-option>
+		</ion-select>
+	</ion-item>
+
+	<button ion-button outline large color="secondary" (click)="save()">New Question</button>
+</ion-content>

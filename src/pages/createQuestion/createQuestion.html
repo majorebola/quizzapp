@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Create a question</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<h2>Let's create an awesome question!</h2>
+	<ion-list>
+		<ion-item>
+			<ion-label>Category</ion-label>
+			<ion-select [(ngModel)]="question.categoryId">
+				<ion-option value="{{cat.id}}" *ngFor="let cat of categories">{{cat.name}}</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Question</ion-label>
+			<ion-input type="text" [(ngModel)]="question.question"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Answer</ion-label>
+			<ion-input type="text" [(ngModel)]="question.answer"></ion-input>
+		</ion-item>
+
+	</ion-list>
+	<button ion-button outline large color="default" (click)="submitQuestion()">Create question</button>
+</ion-content>

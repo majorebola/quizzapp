@@ -1,0 +1,22 @@
+<ion-card>
+	<ion-card-header>
+		Question #{{question.id}}
+	</ion-card-header>
+
+	<ion-card-content>
+		<p class="question">{{question.question}}</p>
+
+		<ion-list radio-group [(ngModel)]="answer">
+			<ion-list-header>
+				Available Answers
+			</ion-list-header>
+
+			<ion-item *ngFor="let answer of question.availableAnswers; let i = index">
+				<ion-label>{{answer}}</ion-label>
+				<ion-radio value="{{i}}"></ion-radio>
+			</ion-item>
+		</ion-list>
+		<button ion-button outline large color="secondary" (click)="verify()">Check Answer</button>
+	</ion-card-content>
+
+</ion-card>
