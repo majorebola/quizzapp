@@ -8,7 +8,8 @@ import {Quiz} from "../Quiz";
 
 @Injectable()
 export class Service {
-	baseUrl = "/api/";
+	baseUrl = "http://d2w-quiz.herokuapp.com/";
+	// baseUrl = "/api/";
 
 	constructor(private http: Http) {
 	}

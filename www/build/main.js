@@ -546,9 +546,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var Service = (function () {
+    // baseUrl = "/api/";
     function Service(http) {
         this.http = http;
-        this.baseUrl = "/api/";
+        this.baseUrl = "http://d2w-quiz.herokuapp.com/";
     }
     Service.prototype.getCategories = function () {
         return this.http.get(this.baseUrl + 'categories').toPromise()
