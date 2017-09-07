@@ -549,7 +549,7 @@ var Service = (function () {
     // baseUrl = "/api/";
     function Service(http) {
         this.http = http;
-        this.baseUrl = "http://d2w-quiz.herokuapp.com/";
+        this.baseUrl = "http://d2w-quiz.herokuapp.com/api/";
     }
     Service.prototype.getCategories = function () {
         return this.http.get(this.baseUrl + 'categories').toPromise()
@@ -600,9 +600,10 @@ var Service = (function () {
 }());
 Service = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], Service);
 
+var _a;
 //# sourceMappingURL=service.js.map
 
 /***/ })
