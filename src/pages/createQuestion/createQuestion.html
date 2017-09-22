@@ -3,7 +3,8 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Create a question</ion-title>
+		<ion-title *ngIf="!editQuestion">Create a question</ion-title>
+		<ion-title *ngIf="editQuestion">Edit a question</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -28,5 +29,5 @@
 		</ion-item>
 
 	</ion-list>
-	<button ion-button outline large color="default" (click)="submitQuestion()">Create question</button>
+	<button ion-button outline large color="default" (click)="submitQuestion()">Save question</button>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {Question} from "../Question";
 import { AlertController } from 'ionic-angular';
+import {Service} from "../services/service";
 
 @Component({
 	selector: 'question',
@@ -10,10 +11,32 @@ export class QuestionComponent {
 	@Input('qst') question: Question;
 
 	answer;
+	showAnswers = false;
+	results;
 
-	constructor(public alertCtrl: AlertController) {
-
+	constructor(public alertCtrl: AlertController, private Service:Service) {
+		this.Service = Service;
+		this.reset();
 	}
+
+	reset () {
+		this.answer = null;
+		this.question = null;
+		this.showAnswers = false;
+	}
+
+
+	get() {
+		this.Service.randomQuestion()
+			.then(data => {
+				console.log(data);
+				this.question = data;
+			})
+			.catch(error => {
+				console.log("ERROR", error); // error message as string
+			});
+	}
+
 
 	verify() {
 		if(!this.answer) {
@@ -24,13 +47,14 @@ export class QuestionComponent {
 			});
 			alert.present();
 		} else {
-			if (this.question.availableAnswers[this.answer] == this.question.correct) {
+			if (this.question.availableAnswers[this.answer] === this.question.correct) {
 				let alert = this.alertCtrl.create({
 					title: 'Good job kiddo!',
 					subTitle: 'You were right!',
 					buttons: ['Hurray!']
 				});
 				alert.present();
+				this.reset();
 			} else {
 				let alert = this.alertCtrl.create({
 					title: 'That was wrong!',

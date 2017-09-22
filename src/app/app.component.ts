@@ -21,11 +21,10 @@ export class MyApp {
 	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
 		this.initializeApp();
 
-		// used for an example of ngFor and navigation
 		this.pages = [
 			{ title: 'Home', component: HomePage },
 			{ title: 'Create Question', component: CreateQuestionPage },
-			{ title: 'Create Question', component: QuestionsPage },
+			{ title: 'Manage', component: QuestionsPage },
 			{ title: 'Settings', component: SettingsPage }
 		];
 

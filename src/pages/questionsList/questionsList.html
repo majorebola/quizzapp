@@ -11,4 +11,9 @@
 
 <ion-content padding>
 	<p>Here we'll have all questions, ordered by quizzes and categories</p>
+	<ion-list>
+		<button ion-item *ngFor="let category of categories" (click)="view(category)">
+			{{ category.name }}
+		</button>
+	</ion-list>
 </ion-content>

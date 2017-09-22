@@ -1,8 +1,8 @@
 {
   "name": "quiz-app",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "0.3.0",
+  "author": "d2w",
+  "homepage": "http://designtoweb.it/",
   "private": true,
   "scripts": {
     "start": "node ./server.js",

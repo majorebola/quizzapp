@@ -1,0 +1,19 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Category <strong>{{category.name}}</strong>
+		</ion-title>
+	</ion-navbar>
+	<ion-fab bottom right edge>
+		<button ion-fab mini (click)="new()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<button ion-item *ngFor="let question of questions" (click)="view(question)">
+			Something
+			{{ question.question }}
+		</button>
+	</ion-list>
+</ion-content>

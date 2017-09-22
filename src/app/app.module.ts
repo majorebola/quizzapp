@@ -15,7 +15,8 @@ import { QuestionComponent } from './question/question.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {QuestionsPage} from "../pages/questionsList/questionsList";
+import { QuestionsPage } from "../pages/questionsList/questionsList";
+import { CategoryPage } from "../pages/questionsList/category";
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import {QuestionsPage} from "../pages/questionsList/questionsList";
 		HomePage,
 		CreateQuestionPage,
 		QuestionsPage,
-		QuestionComponent
+		QuestionComponent,
+		CategoryPage
 	],
 	imports: [
 		BrowserModule,
@@ -38,7 +40,8 @@ import {QuestionsPage} from "../pages/questionsList/questionsList";
 		SettingsPage,
 		HomePage,
 		QuestionsPage,
-		CreateQuestionPage
+		CreateQuestionPage,
+		CategoryPage
 	],
 	providers: [
 		StatusBar,

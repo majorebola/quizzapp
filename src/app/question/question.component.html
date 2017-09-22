@@ -1,4 +1,11 @@
-<ion-card>
+<div text-center>
+	<button *ngIf="!question" ion-button large color="default" (click)="get()">Gimme a Question</button>
+</div>
+
+
+
+<h5 *ngIf="!question">Tap to get a new random question</h5>
+<ion-card *ngIf="question">
 	<ion-card-header>
 		Question #{{question.id}}
 	</ion-card-header>
@@ -6,17 +13,23 @@
 	<ion-card-content>
 		<p class="question">{{question.question}}</p>
 
-		<ion-list radio-group [(ngModel)]="answer">
-			<ion-list-header>
-				Available Answers
-			</ion-list-header>
+		<button *ngIf="!showAnswers" ion-button outline color="primary" (click)="showAnswers = true">Show Answers</button>
 
-			<ion-item *ngFor="let answer of question.availableAnswers; let i = index">
-				<ion-label>{{answer}}</ion-label>
-				<ion-radio value="{{i}}"></ion-radio>
-			</ion-item>
-		</ion-list>
-		<button ion-button outline large color="secondary" (click)="verify()">Check Answer</button>
+		<div *ngIf="showAnswers">
+			<ion-list radio-group [(ngModel)]="answer">
+				<ion-list-header>
+					Available Answers
+				</ion-list-header>
+
+				<ion-item *ngFor="let answer of question.availableAnswers; let i = index">
+					<ion-label>{{answer}}</ion-label>
+					<ion-radio value="{{i}}"></ion-radio>
+				</ion-item>
+			</ion-list>
+			<div text-right>
+				<button ion-button outline color="secondary" (click)="verify()">Check Answer</button>
+			</div>
+		</div>
 	</ion-card-content>
 
 </ion-card>

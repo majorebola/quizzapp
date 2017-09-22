@@ -22,6 +22,14 @@ export class Service {
 			.catch(this.handleError);
 	}
 
+	getCategoryQuestions(categoryId): Promise<Question[]> {
+		return this.http.get(this.baseUrl + 'categories/' + categoryId + '/questions').toPromise()
+			.then(function(response) {
+				return response.json() as Category[];
+			})
+			.catch(this.handleError);
+	}
+
 	getQuizzes(): Promise<Quiz[]> {
 		return this.http.get(this.baseUrl + 'quiz').toPromise()
 			.then(function(response) {

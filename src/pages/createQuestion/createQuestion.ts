@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, NavController, ToastController} from 'ionic-angular';
+import {AlertController, NavController, NavParams, ToastController} from 'ionic-angular';
 import { Service } from "../../app/services/service";
 
 @Component({
@@ -9,11 +9,23 @@ import { Service } from "../../app/services/service";
 export class CreateQuestionPage {
 
 	categories;
+	category;
+	editQuestion = false;
 	question = {};
-	constructor(private Service: Service, public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
+	constructor(params: NavParams, private Service: Service, public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
+		if (params.data.question) {
+			this.editQuestion = true;
+			this.question = params.data.question;
+		}
+		if (params.data.category) {
+			this.category = params.data.category;
+			this.question = {
+				categoryId: this.category.id
+			};
+		}
 		this.getCats();
 	}
-	getCats() {
+	getCats(){
 		this.Service.getCategories().then(data => {
 				console.log(data);
 				this.categories = data;

@@ -3,15 +3,10 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Gimme a random question</ion-title>
+		<ion-title>Random Question</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<button ion-button outline large color="default" (click)="get()">New Question</button>
-	<h5 *ngIf="!results">Top to get a new random question</h5>
-	<div *ngIf="results">
-		<question [qst]="results"></question>
-	</div>
-
+	<question></question>
 </ion-content>
