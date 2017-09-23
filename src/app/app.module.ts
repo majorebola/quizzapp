@@ -17,6 +17,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { QuestionsPage } from "../pages/questionsList/questionsList";
 import { CategoryPage } from "../pages/questionsList/category";
+import {GimmeQuestion} from "../pages/gimmeQuestion/gimmeQuestion";
+import {CreateCategoryPage} from "../pages/createCategory/createCategory";
 
 @NgModule({
 	declarations: [
@@ -26,6 +28,8 @@ import { CategoryPage } from "../pages/questionsList/category";
 		CreateQuestionPage,
 		QuestionsPage,
 		QuestionComponent,
+		GimmeQuestion,
+		CreateCategoryPage,
 		CategoryPage
 	],
 	imports: [
@@ -41,6 +45,8 @@ import { CategoryPage } from "../pages/questionsList/category";
 		HomePage,
 		QuestionsPage,
 		CreateQuestionPage,
+		CreateCategoryPage,
+		GimmeQuestion,
 		CategoryPage
 	],
 	providers: [

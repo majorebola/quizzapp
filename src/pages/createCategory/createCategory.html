@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title *ngIf="!editCategory">Create a Category</ion-title>
+		<ion-title *ngIf="editCategory">Edit a category</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item>
+			<ion-label>Quiz</ion-label>
+			<ion-select [(ngModel)]="category.quizId">
+				<ion-option value="{{quiz.id}}" *ngFor="let quiz of quizzes">{{quiz.name}}</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Name</ion-label>
+			<ion-input type="text" [(ngModel)]="category.name"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Description</ion-label>
+			<ion-input type="text" [(ngModel)]="category.description"></ion-input>
+		</ion-item>
+
+	</ion-list>
+	<button ion-button outline large color="default" (click)="submitCategory()">Save category</button>
+</ion-content>

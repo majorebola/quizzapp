@@ -8,7 +8,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "https://d2w-quiz.herokuapp.com/api"
+      "proxyUrl": "http://52.14.62.243:8000//api"
     }
   ]
 }

@@ -8,7 +8,8 @@ import {Quiz} from "../Quiz";
 
 @Injectable()
 export class Service {
-	baseUrl = "http://d2w-quiz.herokuapp.com/api/";
+	// baseUrl = "http://d2w-quiz.herokuapp.com/api/";
+	baseUrl = "http://52.14.62.243:8000/api/";
 	// baseUrl = "/api/";
 
 	constructor(private http: Http) {
@@ -68,6 +69,14 @@ export class Service {
 				return true;
 			}).catch(response => { return false});
 	}
+
+	postCategory(category): Promise<Boolean> {
+		return this.http.post(this.baseUrl + 'categories', category).toPromise()
+			.then(response => {
+				return true;
+			}).catch(response => { return false});
+	}
+
 
 	private handleError(error: any): Promise<any> {
 		console.error('An error occurred', error); // for demo purposes only

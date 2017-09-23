@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Service} from "../../app/services/service";
 import {CategoryPage} from "./category";
+import {CreateCategoryPage} from "../createCategory/createCategory";
 
 @Component({
 	selector: 'page-questions',
@@ -22,5 +23,8 @@ export class QuestionsPage {
 	}
 	// Service.getQuestions();
 
+	newCategory() {
+		this.navCtrl.push(CreateCategoryPage, {});
+	}
 
 }
