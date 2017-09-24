@@ -11,9 +11,16 @@
 
 <ion-content padding>
 	<ion-list>
-		<button ion-item *ngFor="let question of questions" (click)="view(question)">
-			Something
-			{{ question.question }}
-		</button>
+		<ion-item-sliding *ngFor="let question of questions">
+			<ion-item (click)="view(question)">
+				{{ question.question }}
+			</ion-item>
+			<ion-item-options slide="left">
+				<button ion-button color="danger" (click)="deleteQuestion(question)">
+					<ion-icon name="trash"></ion-icon>
+					delete
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
 	</ion-list>
 </ion-content>

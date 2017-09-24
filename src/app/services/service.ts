@@ -78,6 +78,23 @@ export class Service {
 	}
 
 
+	deleteCategory(category): Promise<Boolean> {
+		return this.http.delete(this.baseUrl + 'categories/' + category.id).toPromise()
+			.then(response => {
+				return true;
+			}).catch(response => { return false});
+	}
+
+
+	deleteQuestion(question): Promise<Boolean> {
+		return this.http.delete(this.baseUrl + 'questions/' + question.id).toPromise()
+			.then(response => {
+				return true;
+			}).catch(response => { return false});
+	}
+
+
+
 	private handleError(error: any): Promise<any> {
 		console.error('An error occurred', error); // for demo purposes only
 		return Promise.reject(error.message || error);

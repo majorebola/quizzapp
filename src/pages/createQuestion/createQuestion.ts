@@ -19,9 +19,7 @@ export class CreateQuestionPage {
 		}
 		if (params.data.category) {
 			this.category = params.data.category;
-			this.question = {
-				categoryId: this.category.id
-			};
+			this.question['categoryId'] = this.category.id;
 		}
 		this.getCats();
 	}

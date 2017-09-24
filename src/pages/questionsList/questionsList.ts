@@ -13,6 +13,10 @@ export class QuestionsPage {
 	questions;
 	categories;
 	constructor(private service: Service, public navCtrl: NavController) {
+		this.getCategories();
+	}
+
+	getCategories() {
 		this.service.getCategories().then((response) => {
 			this.categories = response;
 		})
@@ -23,8 +27,17 @@ export class QuestionsPage {
 	}
 	// Service.getQuestions();
 
-	newCategory() {
-		this.navCtrl.push(CreateCategoryPage, {});
+	newCategory(category) {
+		let params = {};
+		if(category) {
+			params['category'] = category;
+		}
+		this.navCtrl.push(CreateCategoryPage, params);
 	}
 
+	deleteCategory(category) {
+		this.service.deleteCategory(category).then((response) => {
+			this.getCategories();
+		});
+	}
 }

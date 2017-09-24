@@ -6,8 +6,8 @@ webpackJsonp([0],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateQuestionPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -34,9 +34,7 @@ var CreateQuestionPage = (function () {
         }
         if (params.data.category) {
             this.category = params.data.category;
-            this.question = {
-                categoryId: this.category.id
-            };
+            this.question['categoryId'] = this.category.id;
         }
         this.getCats();
     }
@@ -82,7 +80,85 @@ CreateQuestionPage = __decorate([
 
 /***/ }),
 
-/***/ 108:
+/***/ 101:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateCategoryPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CreateCategoryPage = (function () {
+    function CreateCategoryPage(params, Service, navCtrl, alertCtrl, toastCtrl) {
+        this.Service = Service;
+        this.navCtrl = navCtrl;
+        this.alertCtrl = alertCtrl;
+        this.toastCtrl = toastCtrl;
+        this.category = {};
+        this.editCategory = false;
+        if (params.data.category) {
+            this.editCategory = true;
+            this.category = params.data.category;
+        }
+        if (params.data.quiz) {
+            this.quiz = params.data.quiz;
+            this.category = {
+                quizId: this.quiz.id
+            };
+        }
+        this.getQuizzes();
+    }
+    CreateCategoryPage.prototype.getQuizzes = function () {
+        var _this = this;
+        this.Service.getQuizzes().then(function (data) {
+            _this.quizzes = data;
+        });
+    };
+    CreateCategoryPage.prototype.submitCategory = function () {
+        var _this = this;
+        this.Service.postCategory(this.category).then(function (data) {
+            var toast = _this.toastCtrl.create({
+                message: 'Category successfully added',
+                duration: 1500
+            });
+            toast.present();
+            _this.category = {};
+        })
+            .catch(function (error) {
+            var alert = _this.alertCtrl.create({
+                title: 'Oh no!!!',
+                subTitle: 'Something went terribly wrong!! We didn\'t create your category',
+                buttons: ['I hate you fu**in developers!']
+            });
+            alert.present();
+        });
+    };
+    return CreateCategoryPage;
+}());
+CreateCategoryPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'create-category',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\createCategory\createCategory.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title *ngIf="!editCategory">Create a Category</ion-title>\n		<ion-title *ngIf="editCategory">Edit a category</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<ion-list>\n		<ion-item>\n			<ion-label>Quiz</ion-label>\n			<ion-select [(ngModel)]="category.quizId">\n				<ion-option value="{{quiz.id}}" *ngFor="let quiz of quizzes">{{quiz.name}}</ion-option>\n			</ion-select>\n		</ion-item>\n\n		<ion-item>\n			<ion-label floating>Name</ion-label>\n			<ion-input type="text" [(ngModel)]="category.name"></ion-input>\n		</ion-item>\n\n		<ion-item>\n			<ion-label floating>Description</ion-label>\n			<ion-input type="text" [(ngModel)]="category.description"></ion-input>\n		</ion-item>\n\n	</ion-list>\n	<button ion-button outline large color="default" (click)="submitCategory()">Save category</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\createCategory\createCategory.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]])
+], CreateCategoryPage);
+
+//# sourceMappingURL=createCategory.js.map
+
+/***/ }),
+
+/***/ 109:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -95,11 +171,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 108;
+webpackEmptyAsyncContext.id = 109;
 
 /***/ }),
 
-/***/ 150:
+/***/ 151:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -112,17 +188,17 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 150;
+webpackEmptyAsyncContext.id = 151;
 
 /***/ }),
 
-/***/ 196:
+/***/ 197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -151,15 +227,15 @@ HomePage = __decorate([
 
 /***/ }),
 
-/***/ 197:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_service__ = __webpack_require__(29);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -225,16 +301,16 @@ SettingsPage = __decorate([
 
 /***/ }),
 
-/***/ 198:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -251,25 +327,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var QuestionsPage = (function () {
     function QuestionsPage(service, navCtrl) {
-        var _this = this;
         this.service = service;
         this.navCtrl = navCtrl;
+        this.getCategories();
+    }
+    QuestionsPage.prototype.getCategories = function () {
+        var _this = this;
         this.service.getCategories().then(function (response) {
             _this.categories = response;
         });
-    }
+    };
     QuestionsPage.prototype.view = function (category) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__category__["a" /* CategoryPage */], { category: category });
     };
     // Service.getQuestions();
-    QuestionsPage.prototype.newCategory = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__["a" /* CreateCategoryPage */], {});
+    QuestionsPage.prototype.newCategory = function (category) {
+        var params = {};
+        if (category) {
+            params['category'] = category;
+        }
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__["a" /* CreateCategoryPage */], params);
+    };
+    QuestionsPage.prototype.deleteCategory = function (category) {
+        var _this = this;
+        this.service.deleteCategory(category).then(function (response) {
+            _this.getCategories();
+        });
     };
     return QuestionsPage;
 }());
 QuestionsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-questions',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/'<ion-header>\n	<ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			All Questions\n		</ion-title>\n	</ion-navbar>\n	<ion-fab bottom right edge>\n		<button ion-fab mini (click)="newCategory()"><ion-icon name="add"></ion-icon></button>\n	</ion-fab>\n</ion-header>\n\n<ion-content padding>\n	<p>Here we\'ll have all questions, ordered by quizzes and categories</p>\n	<ion-list>\n		<button ion-item *ngFor="let category of categories" (click)="view(category)">\n			{{ category.name }}\n		</button>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/
+        selector: 'page-questions',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/'<ion-header>\n	<ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			Manage Questions\n		</ion-title>\n	</ion-navbar>\n	<ion-fab bottom right edge>\n		<button ion-fab mini (click)="newCategory()"><ion-icon name="add"></ion-icon></button>\n	</ion-fab>\n</ion-header>\n\n<ion-content padding>\n	<p>Tap a Category to edit its questions or slide (to the left) to edit the category</p>\n	<ion-list>\n		<ion-item-sliding *ngFor="let category of categories">\n			<ion-item (click)="view(category)">\n				{{ category.name }}\n			</ion-item>\n			<ion-item-options slide="left">\n				<button ion-button (click)="newCategory(category)">\n					<ion-icon name="more"></ion-icon>\n					edit\n				</button>\n				<button ion-button color="danger" (click)="deleteCategory(category)">\n					<ion-icon name="trash"></ion-icon>\n					delete\n				</button>\n			</ion-item-options>\n		</ion-item-sliding>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
 ], QuestionsPage);
@@ -278,14 +367,14 @@ QuestionsPage = __decorate([
 
 /***/ }),
 
-/***/ 199:
+/***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -302,24 +391,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var CategoryPage = (function () {
     function CategoryPage(params, service, navCtrl) {
-        var _this = this;
         this.service = service;
         this.navCtrl = navCtrl;
         this.category = params.data.category;
+        this.getQuestions();
+    }
+    CategoryPage.prototype.getQuestions = function () {
+        var _this = this;
         this.service.getCategoryQuestions(this.category.id).then(function (response) {
             _this.questions = response;
         });
-    }
+    };
     CategoryPage.prototype.view = function (question) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__["a" /* CreateQuestionPage */], { category: this.category, question: question });
     };
     CategoryPage.prototype.new = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__["a" /* CreateQuestionPage */], { category: this.category });
     };
+    CategoryPage.prototype.deleteQuestion = function (question) {
+        var _this = this;
+        this.service.deleteQuestion(question).then(function (response) {
+            _this.getQuestions();
+        });
+    };
     return CategoryPage;
 }());
 CategoryPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>\n\n			Category <strong>{{category.name}}</strong>\n\n		</ion-title>\n\n	</ion-navbar>\n\n	<ion-fab bottom right edge>\n\n		<button ion-fab mini (click)="new()"><ion-icon name="add"></ion-icon></button>\n\n	</ion-fab>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-list>\n\n		<button ion-item *ngFor="let question of questions" (click)="view(question)">\n\n			Something\n\n			{{ question.question }}\n\n		</button>\n\n	</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/,
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>\n\n			Category <strong>{{category.name}}</strong>\n\n		</ion-title>\n\n	</ion-navbar>\n\n	<ion-fab bottom right edge>\n\n		<button ion-fab mini (click)="new()"><ion-icon name="add"></ion-icon></button>\n\n	</ion-fab>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-list>\n\n		<ion-item-sliding *ngFor="let question of questions">\n\n			<ion-item (click)="view(question)">\n\n				{{ question.question }}\n\n			</ion-item>\n\n			<ion-item-options slide="left">\n\n				<button ion-button color="danger" (click)="deleteQuestion(question)">\n\n					<ion-icon name="trash"></ion-icon>\n\n					delete\n\n				</button>\n\n			</ion-item-options>\n\n		</ion-item-sliding>\n\n	</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/,
         selector: 'category'
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
@@ -329,13 +427,48 @@ CategoryPage = __decorate([
 
 /***/ }),
 
-/***/ 200:
+/***/ 201:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GimmeQuestion; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var GimmeQuestion = (function () {
+    function GimmeQuestion(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    return GimmeQuestion;
+}());
+GimmeQuestion = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'gimme-question',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\gimmeQuestion\gimmeQuestion.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>Random Question</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<question></question>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\gimmeQuestion\gimmeQuestion.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+], GimmeQuestion);
+
+//# sourceMappingURL=gimmeQuestion.js.map
+
+/***/ }),
+
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(221);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -343,28 +476,28 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 219:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_settings_settings__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_settings_settings__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_createQuestion_createQuestion__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__question_question_component__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_questionsList_questionsList__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_questionsList_category__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_gimmeQuestion_gimmeQuestion__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_createCategory_createCategory__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__question_question_component__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_questionsList_questionsList__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_questionsList_category__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_gimmeQuestion_gimmeQuestion__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_createCategory_createCategory__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -436,21 +569,19 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 262:
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_createQuestion_createQuestion__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_settings_settings__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_questionsList_questionsList__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_gimmeQuestion_gimmeQuestion__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_createCategory_createCategory__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_settings_settings__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_questionsList_questionsList__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_gimmeQuestion_gimmeQuestion__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -468,8 +599,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
         this.platform = platform;
@@ -479,11 +608,9 @@ var MyApp = (function () {
         this.initializeApp();
         this.pages = [
             { title: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */] },
-            { title: 'Create Question', component: __WEBPACK_IMPORTED_MODULE_5__pages_createQuestion_createQuestion__["a" /* CreateQuestionPage */] },
-            { title: 'Create Category', component: __WEBPACK_IMPORTED_MODULE_9__pages_createCategory_createCategory__["a" /* CreateCategoryPage */] },
-            { title: 'Gimme Question', component: __WEBPACK_IMPORTED_MODULE_8__pages_gimmeQuestion_gimmeQuestion__["a" /* GimmeQuestion */] },
-            { title: 'Manage', component: __WEBPACK_IMPORTED_MODULE_7__pages_questionsList_questionsList__["a" /* QuestionsPage */] },
-            { title: 'Settings', component: __WEBPACK_IMPORTED_MODULE_6__pages_settings_settings__["a" /* SettingsPage */] }
+            { title: 'Take a Question', component: __WEBPACK_IMPORTED_MODULE_7__pages_gimmeQuestion_gimmeQuestion__["a" /* GimmeQuestion */] },
+            { title: 'Manage', component: __WEBPACK_IMPORTED_MODULE_6__pages_questionsList_questionsList__["a" /* QuestionsPage */] },
+            { title: 'Settings', component: __WEBPACK_IMPORTED_MODULE_5__pages_settings_settings__["a" /* SettingsPage */] }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -516,50 +643,15 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 274:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GimmeQuestion; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var GimmeQuestion = (function () {
-    function GimmeQuestion(navCtrl) {
-        this.navCtrl = navCtrl;
-    }
-    return GimmeQuestion;
-}());
-GimmeQuestion = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'gimme-question',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\gimmeQuestion\gimmeQuestion.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>Random Question</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<question></question>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\gimmeQuestion\gimmeQuestion.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
-], GimmeQuestion);
-
-//# sourceMappingURL=gimmeQuestion.js.map
-
-/***/ }),
-
-/***/ 275:
+/***/ 276:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Question__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Question__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_service__ = __webpack_require__(29);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -643,7 +735,7 @@ QuestionComponent = __decorate([
 
 /***/ }),
 
-/***/ 276:
+/***/ 277:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -658,95 +750,16 @@ var Question = (function () {
 
 /***/ }),
 
-/***/ 277:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateCategoryPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(31);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CreateCategoryPage = (function () {
-    function CreateCategoryPage(params, Service, navCtrl, alertCtrl, toastCtrl) {
-        this.Service = Service;
-        this.navCtrl = navCtrl;
-        this.alertCtrl = alertCtrl;
-        this.toastCtrl = toastCtrl;
-        this.category = {};
-        this.editCategory = false;
-        if (params.data.category) {
-            this.editCategory = true;
-            this.category = params.data.category;
-        }
-        if (params.data.quiz) {
-            this.quiz = params.data.quiz;
-            this.category = {
-                quizId: this.quiz.id
-            };
-        }
-        this.getQuizzes();
-    }
-    CreateCategoryPage.prototype.getQuizzes = function () {
-        var _this = this;
-        this.Service.getQuizzes().then(function (data) {
-            _this.quizzes = data;
-        });
-    };
-    CreateCategoryPage.prototype.submitCategory = function () {
-        var _this = this;
-        this.Service.postCategory(this.category).then(function (data) {
-            var toast = _this.toastCtrl.create({
-                message: 'Category successfully added',
-                duration: 1500
-            });
-            toast.present();
-            _this.category = {};
-        })
-            .catch(function (error) {
-            var alert = _this.alertCtrl.create({
-                title: 'Oh no!!!',
-                subTitle: 'Something went terribly wrong!! We didn\'t create your category',
-                buttons: ['I hate you fu**in developers!']
-            });
-            alert.present();
-        });
-    };
-    return CreateCategoryPage;
-}());
-CreateCategoryPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'create-category',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\createCategory\createCategory.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title *ngIf="!editCategory">Create a Category</ion-title>\n		<ion-title *ngIf="editCategory">Edit a category</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<ion-list>\n		<ion-item>\n			<ion-label>Quiz</ion-label>\n			<ion-select [(ngModel)]="category.quizId">\n				<ion-option value="{{quiz.id}}" *ngFor="let quiz of quizzes">{{quiz.name}}</ion-option>\n			</ion-select>\n		</ion-item>\n\n		<ion-item>\n			<ion-label floating>Name</ion-label>\n			<ion-input type="text" [(ngModel)]="category.name"></ion-input>\n		</ion-item>\n\n		<ion-item>\n			<ion-label floating>Description</ion-label>\n			<ion-input type="text" [(ngModel)]="category.description"></ion-input>\n		</ion-item>\n\n	</ion-list>\n	<button ion-button outline large color="default" (click)="submitCategory()">Save category</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\createCategory\createCategory.html"*/
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _e || Object])
-], CreateCategoryPage);
-
-var _a, _b, _c, _d, _e;
-//# sourceMappingURL=createCategory.js.map
-
-/***/ }),
-
-/***/ 31:
+/***/ 29:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Service; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -822,6 +835,18 @@ var Service = (function () {
             return true;
         }).catch(function (response) { return false; });
     };
+    Service.prototype.deleteCategory = function (category) {
+        return this.http.delete(this.baseUrl + 'categories/' + category.id).toPromise()
+            .then(function (response) {
+            return true;
+        }).catch(function (response) { return false; });
+    };
+    Service.prototype.deleteQuestion = function (question) {
+        return this.http.delete(this.baseUrl + 'questions/' + question.id).toPromise()
+            .then(function (response) {
+            return true;
+        }).catch(function (response) { return false; });
+    };
     Service.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
@@ -830,13 +855,12 @@ var Service = (function () {
 }());
 Service = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
 ], Service);
 
-var _a;
 //# sourceMappingURL=service.js.map
 
 /***/ })
 
-},[200]);
+},[202]);
 //# sourceMappingURL=main.js.map

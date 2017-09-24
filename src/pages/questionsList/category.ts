@@ -11,10 +11,13 @@ export class CategoryPage {
 	questions;
 	constructor(params: NavParams, private service: Service, public navCtrl: NavController) {
 		this.category = params.data.category;
+		this.getQuestions();
+	}
+
+	getQuestions() {
 		this.service.getCategoryQuestions(this.category.id).then((response) => {
 			this.questions = response;
 		})
-
 	}
 
 	view(question) {
@@ -23,6 +26,12 @@ export class CategoryPage {
 
 	new() {
 		this.navCtrl.push(CreateQuestionPage, { category: this.category});
+	}
+
+	deleteQuestion(question) {
+		this.service.deleteQuestion(question).then((response) => {
+			this.getQuestions();
+		});
 	}
 
 }

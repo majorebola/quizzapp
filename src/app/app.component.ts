@@ -4,11 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { CreateQuestionPage } from '../pages/createQuestion/createQuestion';
 import { SettingsPage } from "../pages/settings/settings";
 import { QuestionsPage } from "../pages/questionsList/questionsList";
 import { GimmeQuestion } from "../pages/gimmeQuestion/gimmeQuestion";
-import { CreateCategoryPage } from "../pages/createCategory/createCategory";
 
 @Component({
 	templateUrl: 'app.html'
@@ -25,9 +23,7 @@ export class MyApp {
 
 		this.pages = [
 			{ title: 'Home', component: HomePage },
-			{ title: 'Create Question', component: CreateQuestionPage },
-			{ title: 'Create Category', component: CreateCategoryPage },
-			{ title: 'Gimme Question', component: GimmeQuestion },
+			{ title: 'Take a Question', component: GimmeQuestion },
 			{ title: 'Manage', component: QuestionsPage },
 			{ title: 'Settings', component: SettingsPage }
 		];
