@@ -779,7 +779,7 @@ var Service = (function () {
     function Service(http) {
         this.http = http;
         // baseUrl = "http://d2w-quiz.herokuapp.com/api/";
-        this.baseUrl = "http://52.14.62.243:8000/api/";
+        this.baseUrl = "http://app.kalypay.com:8000/api/";
     }
     Service.prototype.getCategories = function () {
         return this.http.get(this.baseUrl + 'categories').toPromise()
