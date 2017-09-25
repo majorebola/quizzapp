@@ -1,6 +1,275 @@
 webpackJsonp([0],{
 
-/***/ 100:
+/***/ 107:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 107;
+
+/***/ }),
+
+/***/ 149:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 149;
+
+/***/ }),
+
+/***/ 195:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HomePage = (function () {
+    function HomePage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    return HomePage;
+}());
+HomePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-home',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\home\home.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>Quiz-App</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content>\n	<ion-grid>\n		<ion-row>\n			<ion-col col-1></ion-col>\n			<ion-col>\n				<h2>Quizzapp</h2>\n				<p><i>Quizzapp</i> is a simple but effective platform to build your own quiz and test your own knowledge of this quiz</p>\n				<div>It has\n					<ul>\n						<li>Quizzes: everyone can create his own quiz</li>\n						<li>Categories: any quiz can have a limitless number of categories</li>\n						<li>Questions: any category can have a limitless number of questions</li>\n					</ul>\n				</div>\n				<p>Question in the <i>GimmeQuestion</i> section are taken randomly. Answers are taken randomly from the same category</p>\n			</ion-col>\n			<ion-col col-1></ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\home\home.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+], HomePage);
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 196:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_service__ = __webpack_require__(29);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var SettingsPage = (function () {
+    function SettingsPage(service, storage, navCtrl) {
+        var _this = this;
+        this.service = service;
+        this.storage = storage;
+        this.navCtrl = navCtrl;
+        this.service.getQuizzes()
+            .then(function (quizzes) {
+            _this.quizzes = quizzes;
+        })
+            .catch(this.error);
+        var q = this.storage.get('quiz');
+        var c = this.storage.get('category');
+        if (q) {
+            this.quiz = q;
+        }
+        if (c) {
+            this.category = c;
+        }
+    }
+    SettingsPage.prototype.updateCategories = function () {
+        var _this = this;
+        this.service.getQuizCategories(this.quiz)
+            .then(function (categories) {
+            _this.categories = categories;
+        }).catch(this.error);
+    };
+    SettingsPage.prototype.save = function () {
+        console.log('saving', this.quiz, this.category);
+        this.storage.set('quiz', this.quiz);
+        this.storage.set('category', this.category);
+        console.log('saved');
+    };
+    SettingsPage.prototype.error = function (error) {
+        console.log("ERROR", error); // error message as string
+    };
+    SettingsPage.prototype.get = function (key) {
+        return this.storage.get(key);
+    };
+    return SettingsPage;
+}());
+SettingsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-settings',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\settings\settings.html"*/'<ion-header>\n	<ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			Settings\n		</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<p>Settings page</p>\n\n	<p>Here you\'ll select the quiz (and save settings)</p>\n	<p>Log in and logout also</p>\n\n\n\n	<h3>Settings</h3>\n	<ion-item>\n		<ion-label>Select Quiz</ion-label>\n		<ion-select [(ngModel)]="quiz" (ionChange)="updateCategories()">\n			<ion-option value="{{q.id}}" *ngFor="let q of quizzes">{{q.name}}</ion-option>\n		</ion-select>\n	</ion-item>\n\n	<ion-item>\n		<ion-label>Select Categories</ion-label>\n		<ion-select [(ngModel)]="category">\n			<ion-option value="{{c.id}}" *ngFor="let c of categories">{{c.name}}</ion-option>\n		</ion-select>\n	</ion-item>\n\n	<button ion-button outline large color="secondary" (click)="save()">New Question</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\settings\settings.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+], SettingsPage);
+
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+
+/***/ 197:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__ = __webpack_require__(200);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var QuestionsPage = (function () {
+    function QuestionsPage(service, navCtrl) {
+        this.service = service;
+        this.navCtrl = navCtrl;
+        this.getCategories();
+    }
+    QuestionsPage.prototype.getCategories = function () {
+        var _this = this;
+        this.service.getCategories().then(function (response) {
+            _this.categories = response;
+        });
+    };
+    QuestionsPage.prototype.view = function (category) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__category__["a" /* CategoryPage */], { category: category });
+    };
+    // Service.getQuestions();
+    QuestionsPage.prototype.newCategory = function (category) {
+        var params = {};
+        if (category) {
+            params['category'] = category;
+        }
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__["a" /* CreateCategoryPage */], params);
+    };
+    QuestionsPage.prototype.deleteCategory = function (category) {
+        var _this = this;
+        this.service.deleteCategory(category).then(function (response) {
+            _this.getCategories();
+        });
+    };
+    return QuestionsPage;
+}());
+QuestionsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-questions',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/'<ion-header>\n	<ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			Manage Questions\n		</ion-title>\n	</ion-navbar>\n	<ion-fab bottom right edge>\n		<button ion-fab mini (click)="newCategory()"><ion-icon name="add"></ion-icon></button>\n	</ion-fab>\n</ion-header>\n\n<ion-content padding>\n	<p>Tap a Category to edit its questions or slide (to the left) to edit the category</p>\n	<ion-list>\n		<ion-item-sliding *ngFor="let category of categories">\n			<ion-item (click)="view(category)">\n				{{ category.name }}\n			</ion-item>\n			<ion-item-options slide="left">\n				<button ion-button (click)="newCategory(category)">\n					<ion-icon name="more"></ion-icon>\n					edit\n				</button>\n				<button ion-button color="danger" (click)="deleteCategory(category)">\n					<ion-icon name="trash"></ion-icon>\n					delete\n				</button>\n			</ion-item-options>\n		</ion-item-sliding>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+], QuestionsPage);
+
+//# sourceMappingURL=questionsList.js.map
+
+/***/ }),
+
+/***/ 198:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__ = __webpack_require__(199);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CategoryPage = (function () {
+    function CategoryPage(params, service, navCtrl) {
+        this.service = service;
+        this.navCtrl = navCtrl;
+        this.category = params.data.category;
+        this.getQuestions();
+    }
+    CategoryPage.prototype.getQuestions = function () {
+        var _this = this;
+        this.service.getCategoryQuestions(this.category.id).then(function (response) {
+            _this.questions = response;
+        });
+    };
+    CategoryPage.prototype.view = function (question) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__["a" /* CreateQuestionPage */], { category: this.category, question: question });
+    };
+    CategoryPage.prototype.new = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__["a" /* CreateQuestionPage */], { category: this.category });
+    };
+    CategoryPage.prototype.deleteQuestion = function (question) {
+        var _this = this;
+        this.service.deleteQuestion(question).then(function (response) {
+            _this.getQuestions();
+        });
+    };
+    return CategoryPage;
+}());
+CategoryPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>\n\n			Category <strong>{{category.name}}</strong>\n\n		</ion-title>\n\n	</ion-navbar>\n\n	<ion-fab bottom right edge>\n\n		<button ion-fab mini (click)="new()"><ion-icon name="add"></ion-icon></button>\n\n	</ion-fab>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-list>\n\n		<ion-item-sliding *ngFor="let question of questions">\n\n			<ion-item (click)="view(question)">\n\n				{{ question.question }}\n\n			</ion-item>\n\n			<ion-item-options slide="left">\n\n				<button ion-button color="danger" (click)="deleteQuestion(question)">\n\n					<ion-icon name="trash"></ion-icon>\n\n					delete\n\n				</button>\n\n			</ion-item-options>\n\n		</ion-item-sliding>\n\n	</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/,
+        selector: 'category'
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+], CategoryPage);
+
+//# sourceMappingURL=category.js.map
+
+/***/ }),
+
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80,7 +349,7 @@ CreateQuestionPage = __decorate([
 
 /***/ }),
 
-/***/ 101:
+/***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -158,275 +427,6 @@ CreateCategoryPage = __decorate([
 
 /***/ }),
 
-/***/ 109:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 109;
-
-/***/ }),
-
-/***/ 151:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 151;
-
-/***/ }),
-
-/***/ 197:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var HomePage = (function () {
-    function HomePage(navCtrl) {
-        this.navCtrl = navCtrl;
-    }
-    return HomePage;
-}());
-HomePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\home\home.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>Quiz-App</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content>\n	<ion-grid>\n		<ion-row>\n			<ion-col col-1></ion-col>\n			<ion-col>\n				<h2>Quizzapp</h2>\n				<p><i>Quizzapp</i> is a simple but effective platform to build your own quiz and test your own knowledge of this quiz</p>\n				<div>It has\n					<ul>\n						<li>Quizzes: everyone can create his own quiz</li>\n						<li>Categories: any quiz can have a limitless number of categories</li>\n						<li>Questions: any category can have a limitless number of questions</li>\n					</ul>\n				</div>\n				<p>Question in the <i>GimmeQuestion</i> section are taken randomly. Answers are taken randomly from the same category</p>\n			</ion-col>\n			<ion-col col-1></ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\home\home.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
-], HomePage);
-
-//# sourceMappingURL=home.js.map
-
-/***/ }),
-
-/***/ 198:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_service__ = __webpack_require__(29);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var SettingsPage = (function () {
-    function SettingsPage(service, storage, navCtrl) {
-        var _this = this;
-        this.service = service;
-        this.storage = storage;
-        this.navCtrl = navCtrl;
-        this.service.getQuizzes()
-            .then(function (quizzes) {
-            _this.quizzes = quizzes;
-        })
-            .catch(this.error);
-        var q = this.storage.get('quiz');
-        var c = this.storage.get('category');
-        if (q) {
-            this.quiz = q;
-        }
-        if (c) {
-            this.category = c;
-        }
-    }
-    SettingsPage.prototype.updateCategories = function () {
-        var _this = this;
-        this.service.getQuizCategories(this.quiz)
-            .then(function (categories) {
-            _this.categories = categories;
-        }).catch(this.error);
-    };
-    SettingsPage.prototype.save = function () {
-        console.log('saving', this.quiz, this.category);
-        this.storage.set('quiz', this.quiz);
-        this.storage.set('category', this.category);
-        console.log('saved');
-    };
-    SettingsPage.prototype.error = function (error) {
-        console.log("ERROR", error); // error message as string
-    };
-    SettingsPage.prototype.get = function (key) {
-        return this.storage.get(key);
-    };
-    return SettingsPage;
-}());
-SettingsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-settings',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\settings\settings.html"*/'<ion-header>\n	<ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			Settings\n		</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<p>Settings page</p>\n\n	<p>Here you\'ll select the quiz (and save settings)</p>\n	<p>Log in and logout also</p>\n\n\n\n	<h3>Settings</h3>\n	<ion-item>\n		<ion-label>Select Quiz</ion-label>\n		<ion-select [(ngModel)]="quiz" (ionChange)="updateCategories()">\n			<ion-option value="{{q.id}}" *ngFor="let q of quizzes">{{q.name}}</ion-option>\n		</ion-select>\n	</ion-item>\n\n	<ion-item>\n		<ion-label>Select Categories</ion-label>\n		<ion-select [(ngModel)]="category">\n			<ion-option value="{{c.id}}" *ngFor="let c of categories">{{c.name}}</ion-option>\n		</ion-select>\n	</ion-item>\n\n	<button ion-button outline large color="secondary" (click)="save()">New Question</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\settings\settings.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
-], SettingsPage);
-
-//# sourceMappingURL=settings.js.map
-
-/***/ }),
-
-/***/ 199:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__ = __webpack_require__(101);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var QuestionsPage = (function () {
-    function QuestionsPage(service, navCtrl) {
-        this.service = service;
-        this.navCtrl = navCtrl;
-        this.getCategories();
-    }
-    QuestionsPage.prototype.getCategories = function () {
-        var _this = this;
-        this.service.getCategories().then(function (response) {
-            _this.categories = response;
-        });
-    };
-    QuestionsPage.prototype.view = function (category) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__category__["a" /* CategoryPage */], { category: category });
-    };
-    // Service.getQuestions();
-    QuestionsPage.prototype.newCategory = function (category) {
-        var params = {};
-        if (category) {
-            params['category'] = category;
-        }
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__createCategory_createCategory__["a" /* CreateCategoryPage */], params);
-    };
-    QuestionsPage.prototype.deleteCategory = function (category) {
-        var _this = this;
-        this.service.deleteCategory(category).then(function (response) {
-            _this.getCategories();
-        });
-    };
-    return QuestionsPage;
-}());
-QuestionsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-questions',template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/'<ion-header>\n	<ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			Manage Questions\n		</ion-title>\n	</ion-navbar>\n	<ion-fab bottom right edge>\n		<button ion-fab mini (click)="newCategory()"><ion-icon name="add"></ion-icon></button>\n	</ion-fab>\n</ion-header>\n\n<ion-content padding>\n	<p>Tap a Category to edit its questions or slide (to the left) to edit the category</p>\n	<ion-list>\n		<ion-item-sliding *ngFor="let category of categories">\n			<ion-item (click)="view(category)">\n				{{ category.name }}\n			</ion-item>\n			<ion-item-options slide="left">\n				<button ion-button (click)="newCategory(category)">\n					<ion-icon name="more"></ion-icon>\n					edit\n				</button>\n				<button ion-button color="danger" (click)="deleteCategory(category)">\n					<ion-icon name="trash"></ion-icon>\n					delete\n				</button>\n			</ion-item-options>\n		</ion-item-sliding>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\questionsList.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
-], QuestionsPage);
-
-//# sourceMappingURL=questionsList.js.map
-
-/***/ }),
-
-/***/ 200:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_service__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__ = __webpack_require__(100);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var CategoryPage = (function () {
-    function CategoryPage(params, service, navCtrl) {
-        this.service = service;
-        this.navCtrl = navCtrl;
-        this.category = params.data.category;
-        this.getQuestions();
-    }
-    CategoryPage.prototype.getQuestions = function () {
-        var _this = this;
-        this.service.getCategoryQuestions(this.category.id).then(function (response) {
-            _this.questions = response;
-        });
-    };
-    CategoryPage.prototype.view = function (question) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__["a" /* CreateQuestionPage */], { category: this.category, question: question });
-    };
-    CategoryPage.prototype.new = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__createQuestion_createQuestion__["a" /* CreateQuestionPage */], { category: this.category });
-    };
-    CategoryPage.prototype.deleteQuestion = function (question) {
-        var _this = this;
-        this.service.deleteQuestion(question).then(function (response) {
-            _this.getQuestions();
-        });
-    };
-    return CategoryPage;
-}());
-CategoryPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-title>\n\n			Category <strong>{{category.name}}</strong>\n\n		</ion-title>\n\n	</ion-navbar>\n\n	<ion-fab bottom right edge>\n\n		<button ion-fab mini (click)="new()"><ion-icon name="add"></ion-icon></button>\n\n	</ion-fab>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n	<ion-list>\n\n		<ion-item-sliding *ngFor="let question of questions">\n\n			<ion-item (click)="view(question)">\n\n				{{ question.question }}\n\n			</ion-item>\n\n			<ion-item-options slide="left">\n\n				<button ion-button color="danger" (click)="deleteQuestion(question)">\n\n					<ion-icon name="trash"></ion-icon>\n\n					delete\n\n				</button>\n\n			</ion-item-options>\n\n		</ion-item-sliding>\n\n	</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\edoar\Documents\Personal\Projects\quiz-app\src\pages\questionsList\category.html"*/,
-        selector: 'category'
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__app_services_service__["a" /* Service */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
-], CategoryPage);
-
-//# sourceMappingURL=category.js.map
-
-/***/ }),
-
 /***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -484,20 +484,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_service__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_settings_settings__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_createQuestion_createQuestion__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_settings_settings__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_createQuestion_createQuestion__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__question_question_component__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_questionsList_questionsList__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_questionsList_category__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_questionsList_questionsList__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_questionsList_category__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_gimmeQuestion_gimmeQuestion__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_createCategory_createCategory__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_createCategory_createCategory__ = __webpack_require__(200);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -576,11 +576,11 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_settings_settings__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_questionsList_questionsList__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_settings_settings__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_questionsList_questionsList__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_gimmeQuestion_gimmeQuestion__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -756,7 +756,7 @@ var Question = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Service; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(275);
