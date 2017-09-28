@@ -8,7 +8,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://52.14.62.243:8000//api"
+      "proxyUrl": "http://api.quiz.d2w.it/api"
     }
   ]
 }
